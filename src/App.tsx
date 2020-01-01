@@ -2,7 +2,7 @@ import * as React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { NavLink as Link } from 'react-router-dom'
-import Routes from './routes'
+import Routes from './routes/routes'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 
