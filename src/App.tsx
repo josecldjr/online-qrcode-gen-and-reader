@@ -13,8 +13,7 @@ const App: React.FC = () => {
       <div>
         {/* Header and menu */}
         <Link to="/" > Home</Link>
-        <Link to="/aaa" > Page1</Link>
-        <Link to="/bbb" > Page 2</Link>
+        <Link to="/about" > About</Link> 
         <Link to="/--" > Not Found</Link>
       </div>
 

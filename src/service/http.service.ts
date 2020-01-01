@@ -4,7 +4,7 @@ import axios, { AxiosRequestConfig } from 'axios'
  * Base service for http requisitions
  */
 export class HttpService {
-    private static instance: HttpService = null
+    private static instance: HttpService
 
     /**
      * Get the current instance of the http service
@@ -22,7 +22,7 @@ export class HttpService {
      * @param params params to be passed as query string
      * @param options http options
      */
-    get(url: string, params, options: AxiosRequestConfig) {
+    get(url: string, params: any, options: AxiosRequestConfig) {
         return axios.get(url, {params, ...options})
     }
 

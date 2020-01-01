@@ -1,6 +1,6 @@
 import React from  'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
-import HomePage from '../container/default/Home'
+import HomePage from '../container/default/home'
 import NotFoundPage from '../container/default/not-found'
 import AboutPage from '../container/default/about-page'
 
