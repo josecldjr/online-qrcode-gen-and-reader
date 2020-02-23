@@ -1,32 +1,39 @@
-import * as React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { NavLink as Link } from 'react-router-dom'
-import Routes from './routes/routes'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
+import * as React from 'react';
+import { useContext } from 'react';
+import { BrowserRouter as Router, NavLink as Link } from 'react-router-dom';
+
+import { AppContextProvider } from './context/app-context';
+import Routes from './routes/routes';
 
 
 const App: React.FC = () => {
-  return <Router>
-    <div className="App">
-      <div>
-        {/* Header and menu */}
-        <Link to="/" > Home</Link>
-        <Link to="/about" > About</Link> 
-        <Link to="/--" > Not Found</Link>
-      </div>
+ 
+  
+  return <AppContextProvider>
+      <Router>
+            <div className="App">
+              <div>
+                {/* Header and menu */}
+                <Link to="/" > Home</Link>
+                <Link to="/about" > About</Link> 
+                <Link to="/--" > Not Found</Link>
+              </div>
+    
+        
+              <div>
+                <Routes />
+              </div>
+       
+            
+              <div>
+                {/* Footer */}
+              </div>
 
-      <div>
-        <Routes />
-      </div>
-
-      <div>
-        {/* Footer */}
-      </div>
-
-    </div>
-  </Router>
+            </div>
+    </Router>
+  </AppContextProvider>
 }
 
 export default App
