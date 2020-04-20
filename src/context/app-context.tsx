@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 
 export interface IAppContext {
-    isLoggedIn: boolean
-    auth: {
-        id: number
-        name: string
-    }
-    setIsLoggedIn: (value: boolean) => void
+    scans: string[]
+    setScans: (value: string[]) => void
 }
 
 export const AppContext = React.createContext<IAppContext>(null)
@@ -14,10 +10,9 @@ export const AppContext = React.createContext<IAppContext>(null)
 export const AppContextConsumer = AppContext.Consumer
 
 export const AppContextProvider = (props: any) => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [auth, setAuth] = useState<{name: string, id: number}>();
+    const [scans, setScans] = useState<string[]>([])
 
-    return <AppContext.Provider value={{auth, isLoggedIn, setIsLoggedIn}}>
+    return <AppContext.Provider value={{ scans, setScans }}>
         {props.children}
     </AppContext.Provider>
 }
