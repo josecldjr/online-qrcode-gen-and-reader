@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <div className="App">
         <div>
           {/* Header and menu */}
-          <Link to="/" > Home</Link>
+          {/* <Link to="/" > Home</Link> */}
         </div>
 
         <div>
