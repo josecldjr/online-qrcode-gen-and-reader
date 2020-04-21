@@ -1,6 +1,7 @@
-import { Grid, IconButton, ListItem, ListItemText, Paper, Typography } from '@material-ui/core'
+import { Button, Grid, IconButton, ListItem, ListItemText, Paper, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-import { AdsPlaceholder } from '../../component/ads-placeholder'
+import { Link } from 'react-router-dom'
+import { DisclaimerBox } from '../../component/disclaimer-box'
 import Scanner from '../../component/scanner'
 import { TextDialog } from '../../component/text-dialog'
 
@@ -40,6 +41,13 @@ function HomePage() {
 
     return <Grid container justify="center" alignContent="center">
         <Grid item xs={12} md={8} >
+            <Grid>
+                <Link to="/generate" >
+                    <Button variant="outlined">
+                        Generator
+                    </Button>
+                </Link>
+            </Grid>
             <Paper >
                 <Grid>
                     <Typography variant="h4">
@@ -86,7 +94,7 @@ function HomePage() {
 
                             item
                         >
-                            <AdsPlaceholder />
+                            <DisclaimerBox />
                         </Grid>
                     </Grid>
                     {
