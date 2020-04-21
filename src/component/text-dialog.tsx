@@ -24,17 +24,18 @@ export function TextDialog(props: TextDialogProps) {
             closeDialog()
         }}
     >
-        <DialogTitle id="alert-dialog-title">Scan result</DialogTitle>
+        <DialogTitle> {Boolean(props.text) ? 'Scan result' : ''} </DialogTitle>
         <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <DialogContentText>
                 {props.text}
             </DialogContentText>
         </DialogContent>
         <DialogActions>
             {
-                props.buttons
-                && props.buttons.map(button => {
+                Boolean(props.text) && props.buttons
+                && props.buttons.map((button, index) => {
                     return <Button
+                        key={index}
                         onClick={() => {
                             button.onClick(props.text, closeDialog)
                         }}

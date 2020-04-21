@@ -1,5 +1,6 @@
 import { Grid, IconButton, ListItem, ListItemText, Paper, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
+import { AdsPlaceholder } from '../../component/ads-placeholder'
 import Scanner from '../../component/scanner'
 import { TextDialog } from '../../component/text-dialog'
 
@@ -37,8 +38,8 @@ function HomePage() {
 
     }
 
-    return <Grid container justify="center">
-        <Grid item xs={12} md={8} justify="center">
+    return <Grid container justify="center" alignContent="center">
+        <Grid item xs={12} md={8} >
             <Paper >
                 <Grid>
                     <Typography variant="h4">
@@ -62,34 +63,49 @@ function HomePage() {
                         Legacy Mode
                     </IconButton>
                 </Grid>
-                <Grid>
-                    <Grid style={{ margin: 10, padding: 10 }}>
+                <Grid >
+                    <Grid xs={12} container >
+                        <Grid
+                            xs={12}
+                            md={6}
+                            style={{ margin: 0, padding: 10 }}
 
-                        <Scanner
-                            onScan={handleScann}
-                            onError={handleError}
-                            onLoad={() => {
-                                console.log('IAMGE LOADED');
+                            item
+                        >
+                            <Scanner
+                                onScan={handleScann}
+                                onError={handleError}
+                                facingMode={faceMode}
+                                legacy={legacy}
+                            />
+                        </Grid>
+                        <Grid
+                            xs={12}
+                            md={6}
+                            style={{ margin: 0, padding: 10 }}
 
-                            }}
-                            facingMode={faceMode}
-                            legacy={legacy}
-                        />
-
-
+                            item
+                        >
+                            <AdsPlaceholder />
+                        </Grid>
                     </Grid>
                     {
                         lastScans && lastScans.length > 0 &&
-                        <Grid>
-                            <Typography variant="h6" >
-                                Last Scans
-                        </Typography>
+                        <Grid item xs={12}>
+                            <Grid>
+                                <Typography variant="h6" align="center">
+                                    Last Scans
+                                </Typography>
+                            </Grid>
                             <Grid>
                                 {
-                                    lastScans.map((scan) => {
+                                    lastScans.map((scan, index) => {
                                         return <ListItem
+                                            key={index}
                                             onClick={() => setScannedText(scan)}
                                             button={true}
+                                            style={{ width: '100%' }}
+
                                         >
                                             <ListItemText
                                                 primary={scan}

@@ -13,7 +13,7 @@ export interface ScannerProps {
 export default function Scanner(props: ScannerProps) {
     const delay = 150
 
-    return <Grid>
+    return <Grid item>
         <QrReader
             delay={delay}
             onError={props.onError}
