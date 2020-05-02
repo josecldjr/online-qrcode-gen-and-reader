@@ -16,7 +16,7 @@ function HomePage() {
     const [legacy, setLegacy] = useState(false)
 
     const [scannedText, setScannedText] = useState<string>(null)
-    const [lastScans, setLastScans] = useState<string[]>(['aaaa', 'bbbb', 'cccc'])
+    const [lastScans, setLastScans] = useState<string[]>([])
 
     useEffect(() => {
         if (scannedText) {
