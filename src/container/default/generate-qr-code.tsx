@@ -25,7 +25,10 @@ export default function GenerateQRCode() {
     }
 
     const dowloadFile = (urlEncodeImage: string) => {
-
+        const anchor = document.createElement("a")
+        anchor.href = urlEncodeImage
+        anchor.download = `qrcode-online_file_${Date.now()}.png`
+        anchor.click()
 
     }
 
@@ -47,9 +50,11 @@ export default function GenerateQRCode() {
                 <Paper className={classes.paper}>
                     <QRGenerator
                         text={inputText}
-                        onTextUpdate={(image, text) => {
+                        onTextUpdate={(imageAsBase64, text) => {
                             setInputText(text)
-                            setImage(image)
+                            console.log('imageAsBase64', imageAsBase64);
+
+                            setImage(imageAsBase64)
                         }}
                         onError={onError}
                     />
