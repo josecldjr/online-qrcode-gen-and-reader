@@ -11,6 +11,8 @@ export interface QRGeneratorProps {
 }
 
 export function QRGenerator(props: QRGeneratorProps) {
+    const classes = useStyles()
+
     const [imageAsDataURI, setimageAsDataURI] = useState<string>(null)
 
     useEffect(() => {
@@ -35,7 +37,7 @@ export function QRGenerator(props: QRGeneratorProps) {
 
     return <Grid item>
         <Grid>
-            <Typography variant="h4">
+            <Typography className={classes.title} variant="h4">
                 Generate a QR Code
             </Typography>
         </Grid>
@@ -45,6 +47,7 @@ export function QRGenerator(props: QRGeneratorProps) {
             </Typography>
         </Grid>
         <TextField
+            className={classes.input}
             variant="standard"
             onChange={(event) => {
                 const value = event.target.value
@@ -75,5 +78,13 @@ export function QRGenerator(props: QRGeneratorProps) {
 const useStyles = makeStyles(() => ({
     image: {
 
+    },
+    input: {
+        marginBottom: 15,
+        marginTop: 25,
+    },
+    title: {
+        margin: 25,
+        padding: 25,
     }
 }))

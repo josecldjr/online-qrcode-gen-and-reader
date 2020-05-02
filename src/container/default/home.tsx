@@ -1,21 +1,25 @@
-import { Button, Grid, IconButton, ListItem, ListItemText, Paper, Typography } from '@material-ui/core'
+import { Button, Grid, IconButton, makeStyles, Paper, Typography } from '@material-ui/core'
+import CameraAltIcon from '@material-ui/icons/CameraAlt'
+import SwitchCameraIcon from '@material-ui/icons/SwitchCamera'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DisclaimerBox } from '../../component/disclaimer-box'
 import Scanner from '../../component/scanner'
+import { ScansList } from '../../component/scans-list'
 import { TextDialog } from '../../component/text-dialog'
 
 function HomePage() {
+
+    const classes = useStyles()
 
     const [faceMode, setFaceMode] = useState(false)
     const [legacy, setLegacy] = useState(false)
 
     const [scannedText, setScannedText] = useState<string>(null)
-    const [lastScans, setLastScans] = useState<string[]>([])
+    const [lastScans, setLastScans] = useState<string[]>(['aaaa', 'bbbb', 'cccc'])
 
     useEffect(() => {
         if (scannedText) {
-
 
             setLastScans(currentScans => {
                 return [
@@ -39,45 +43,53 @@ function HomePage() {
 
     }
 
-    return <Grid container justify="center" alignContent="center">
+    return <Grid
+        container
+        justify="center"
+        alignContent="center"
+        className={classes.background}
+    >
         <Grid item xs={12} md={8} >
-            <Grid>
-                <Link to="/generate" >
+            <Grid className={classes.linkContainer}>
+                <Link to="/generate" className={classes.link} >
                     <Button variant="outlined">
                         Generator
                     </Button>
                 </Link>
             </Grid>
-            <Paper >
+            <Paper className={classes.paper} >
                 <Grid>
-                    <Typography variant="h4">
+                    <Typography className={classes.title} variant="h4">
                         QR Code Reader
                     </Typography>
                 </Grid>
-                <Grid>
+                <Grid >
                     <IconButton
+                        className={classes.pannelButton}
                         onClick={() => {
                             setFaceMode(!faceMode)
                         }}
                     >
+                        <SwitchCameraIcon className={classes.icon} />
                         Switch Camera
                     </IconButton>
                     <IconButton
+                        className={classes.pannelButton}
                         color={legacy ? "primary" : "default"}
                         onClick={() => {
                             setLegacy(!legacy)
                         }}
                     >
+                        <CameraAltIcon className={classes.icon} />
                         Legacy Mode
                     </IconButton>
                 </Grid>
                 <Grid >
-                    <Grid xs={12} container >
+                    <Grid item xs={12} container >
                         <Grid
                             xs={12}
                             md={6}
                             style={{ margin: 0, padding: 10 }}
-
                             item
                         >
                             <Scanner
@@ -88,11 +100,10 @@ function HomePage() {
                             />
                         </Grid>
                         <Grid
+                            item
                             xs={12}
                             md={6}
                             style={{ margin: 0, padding: 10 }}
-
-                            item
                         >
                             <DisclaimerBox />
                         </Grid>
@@ -106,21 +117,12 @@ function HomePage() {
                                 </Typography>
                             </Grid>
                             <Grid>
-                                {
-                                    lastScans.map((scan, index) => {
-                                        return <ListItem
-                                            key={index}
-                                            onClick={() => setScannedText(scan)}
-                                            button={true}
-                                            style={{ width: '100%' }}
-
-                                        >
-                                            <ListItemText
-                                                primary={scan}
-                                            />
-                                        </ListItem >
-                                    })
-                                }
+                                <ScansList
+                                    lastScans={lastScans}
+                                    onClick={(text) => {
+                                        setScannedText(text)
+                                    }}
+                                />
                             </Grid>
                         </Grid>
                     }
@@ -153,5 +155,33 @@ function HomePage() {
     </Grid>
 
 }
+
+
+const useStyles = makeStyles(() => ({
+    linkContainer: {
+        margin: 10,
+        padding: 10,
+    },
+    link: {
+        textDecoration: 'none'
+    },
+    pannelButton: {
+        fontSize: 16,
+    },
+    icon: {
+        padding: 2
+    },
+    background: {
+        backgroundColor: '#EADAD7'
+    },
+    paper: {
+        boxShadow: '3px 3px 5px gray',
+        marginBottom: 25,
+    },
+    title: {
+        margin: 25,
+        padding: 25,
+    }
+}))
 
 export default HomePage

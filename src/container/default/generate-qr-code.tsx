@@ -15,7 +15,6 @@ export default function GenerateQRCode() {
     const onError = (err: any) => {
         const errorText = 'Ops, looks like something went wrong !'
 
-
         setError(errorText)
 
         setTimeout(() => {
@@ -25,14 +24,19 @@ export default function GenerateQRCode() {
         }, 1500)
     }
 
-    const dowloadFile = (urlEncodeImage) => {
+    const dowloadFile = (urlEncodeImage: string) => {
 
 
     }
 
-    return <Grid>
-        <Grid>
-            <Link to="/" >
+    return <Grid
+        container
+        justify="center"
+        alignContent="center"
+        className={classes.background}
+    >
+        <Grid className={classes.linkContainer}>
+            <Link to="/" className={classes.link}  >
                 <Button variant="outlined">
                     Scanner
                 </Button>
@@ -40,7 +44,7 @@ export default function GenerateQRCode() {
         </Grid>
         <Grid container justify="center" >
             <Grid item xs={12} md={4} >
-                <Paper>
+                <Paper className={classes.paper}>
                     <QRGenerator
                         text={inputText}
                         onTextUpdate={(image, text) => {
@@ -53,6 +57,7 @@ export default function GenerateQRCode() {
                         Boolean(inputText)
                             ? <Grid>
                                 <Button
+                                    className={classes.button}
                                     variant="outlined"
                                     onClick={() => {
                                         dowloadFile(image)
@@ -85,5 +90,23 @@ const useStyles = makeStyles(() => ({
     snackbar: {
         position: 'fixed',
         bottom: 0,
+    },
+    button: {
+        marginBottom: 25,
+    },
+    linkContainer: {
+        margin: 10,
+        padding: 10,
+    },
+    link: {
+        textDecoration: 'none'
+    },
+    background: {
+        backgroundColor: '#EADAD7',
+    },
+    paper: {
+        boxShadow: '3px 3px 5px gray',
+        marginBottom: 25,
+        minHeight: '70vh'
     }
 }))
