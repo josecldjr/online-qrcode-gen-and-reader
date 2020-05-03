@@ -3,7 +3,7 @@ import CameraAltIcon from '@material-ui/icons/CameraAlt'
 import SwitchCameraIcon from '@material-ui/icons/SwitchCamera'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { DisclaimerBox } from '../../component/disclaimer-box'
+import { AdvertisingBox } from '../../component/disclaimer-box'
 import Scanner from '../../component/scanner'
 import { ScansList } from '../../component/scans-list'
 import { TextDialog } from '../../component/text-dialog'
@@ -105,7 +105,7 @@ function HomePage() {
                             md={6}
                             style={{ margin: 0, padding: 10 }}
                         >
-                            <DisclaimerBox />
+                            <AdvertisingBox />
                         </Grid>
                     </Grid>
                     {
