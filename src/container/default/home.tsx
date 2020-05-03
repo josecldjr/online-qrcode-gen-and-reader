@@ -89,7 +89,7 @@ function HomePage() {
                         <Grid
                             xs={12}
                             md={6}
-                            style={{ margin: 0, padding: 10 }}
+                            className={classes.box}
                             item
                         >
                             <Scanner
@@ -103,7 +103,7 @@ function HomePage() {
                             item
                             xs={12}
                             md={6}
-                            style={{ margin: 0, padding: 10 }}
+                            className={classes.box}
                         >
                             <AdvertisingBox />
                         </Grid>
@@ -181,6 +181,10 @@ const useStyles = makeStyles(() => ({
     title: {
         margin: 25,
         padding: 25,
+    },
+    box: {
+        margin: 0,
+        padding: 10,
     }
 }))
 

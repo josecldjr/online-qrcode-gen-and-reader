@@ -1,10 +1,19 @@
-import { Grid, Typography } from "@material-ui/core"; import React from "react";
+import { Grid, Typography, makeStyles } from "@material-ui/core"; import React from "react";
 
 
 export function AdvertisingBox() {
-    return <Grid style={{ border: '1px solid #cecece', height: '100%', minHeight: 430 }}>
+    const classes = useStyles()
+    return <Grid className={classes.box}>
         <Typography>
             Advertising
         </Typography>
     </Grid>
 }
+
+const useStyles = makeStyles(() => ({
+    box: {
+        border: '1px solid #cecece',
+        height: '100%',
+        minHeight: 430,
+    }
+}))

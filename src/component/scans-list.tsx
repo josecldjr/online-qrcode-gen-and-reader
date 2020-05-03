@@ -1,4 +1,4 @@
-import { Grid, ListItem, ListItemText } from "@material-ui/core"
+import { Grid, ListItem, ListItemText, makeStyles } from "@material-ui/core"
 import React from "react"
 
 export interface ScansListProps {
@@ -7,7 +7,7 @@ export interface ScansListProps {
 }
 
 export function ScansList(props: ScansListProps) {
-
+    const classes = useStyles()
 
 
     return <Grid item xs={12}>
@@ -17,7 +17,7 @@ export function ScansList(props: ScansListProps) {
                     key={index}
                     onClick={() => props.onClick(scan)}
                     button={true}
-                    style={{ width: '100%' }}
+                    className={classes.listItem}
 
                 >
                     <ListItemText
@@ -28,3 +28,9 @@ export function ScansList(props: ScansListProps) {
         }
     </Grid>
 }
+
+const useStyles = makeStyles(() => ({
+    listItem: {
+        width: '100%',
+    }
+}))
