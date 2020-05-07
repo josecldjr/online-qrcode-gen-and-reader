@@ -19,4 +19,4 @@ It will start the dev server from react (the application will be available in ht
 It will export an optmized react build as static files ( you will need a http server to provide the files to the user in this case)
 
 ##### Demo:
-[Click here](https://qrcode-online.firebaseapp.com/)
+[Click here](https://bit.ly/2L97cIg)
